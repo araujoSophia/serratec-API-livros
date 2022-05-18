@@ -7,40 +7,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "editora")
-public class Editora {
+@Table(name = "autor")
+public class Autor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "editora_id")
-	private Integer editoraId;
+	@Column(name = "autor_id")
+	private Integer autorId;
 
-	@Column(name = "editora_nome")
-	private String editoraNome;
+	@Column(name = "autor_nome")
+	private String autorNome;
 
-	@OneToMany(mappedBy = "editora")
+	@ManyToMany(mappedBy = "autorList")
 	@JsonIgnore
 	private List<Livro> livroList;
 
-	public Integer getEditoraId() {
-		return editoraId;
+	public Integer getAutorId() {
+		return autorId;
 	}
 
-	public void setEditoraId(Integer editoraId) {
-		this.editoraId = editoraId;
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
 	}
 
-	public String getEditoraNome() {
-		return editoraNome;
+	public String getAutorNome() {
+		return autorNome;
 	}
 
-	public void setEditoraNome(String editoraNome) {
-		this.editoraNome = editoraNome;
+	public void setAutorNome(String autorNome) {
+		this.autorNome = autorNome;
 	}
 
 	public List<Livro> getLivroList() {
@@ -50,4 +50,5 @@ public class Editora {
 	public void setLivroList(List<Livro> livroList) {
 		this.livroList = livroList;
 	}
+
 }
