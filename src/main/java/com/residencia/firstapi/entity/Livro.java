@@ -1,14 +1,11 @@
 package com.residencia.firstapi.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -29,11 +26,11 @@ public class Livro {
 	@JoinColumn(name = "editora_id", referencedColumnName = "editora_id")
 	@JsonIgnore
 	private Editora editora;
-
-	@ManyToMany
+	
+	@ManyToOne
 	@JoinColumn(name = "autor_id", referencedColumnName = "autor_id")
 	@JsonIgnore
-	private List<Autor> autorList;
+	private Autor autor;
 
 	public Integer getLivroId() {
 		return livroId;
@@ -59,12 +56,12 @@ public class Livro {
 		this.editora = editora;
 	}
 
-	public List<Autor> getAutorList() {
-		return autorList;
+	public Autor getAutor() {
+		return autor;
 	}
 
-	public void setAutorList(List<Autor> autorList) {
-		this.autorList = autorList;
+	public void setAutor(Autor autor) {
+		this.autor = autor;
 	}
 
 }
